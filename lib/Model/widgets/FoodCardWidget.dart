@@ -19,8 +19,8 @@ class FoodCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          height: 250,
-          width: 260,
+          height: MediaQuery.of(context).size.height /2,
+          width: MediaQuery.of(context).size.width *0.7,
           decoration: BoxDecoration(
              color: AppColor.white,
             borderRadius: BorderRadius.circular(8),
@@ -40,43 +40,50 @@ class FoodCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 250,
-                  height: MediaQuery.of(context).size.height / 6,
-                 decoration: BoxDecoration(
-                   color: AppColor.lightOrange,
-                   borderRadius: BorderRadius.circular(8),
-                 ),
+                Expanded(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 5,
+                   decoration: BoxDecoration(
+                     color: AppColor.lightOrange,
+                     borderRadius: BorderRadius.circular(8),
+                   ),
 
 
-                  child: Center(
-                    child: Hero(
-                        tag:item.foodImage! ,
-                        child: CachedNetworkImage(
-                          imageUrl: item.foodImage!,
-                          placeholder: (context, url) =>  LoadingAnimationWidget.staggeredDotsWave(
-                            color: Colors.white,
-                            size: 100,
+                    child: Center(
+                      child: Hero(
+                          tag:item.foodImage! ,
+                          child: CachedNetworkImage(
+                            imageUrl: item.foodImage!,
+                            placeholder: (context, url) =>  LoadingAnimationWidget.staggeredDotsWave(
+                              color: Colors.white,
+                              size: 100,
+                            ),
                           ),
-                        ),
+                      ),
                     ),
                   ),
                 ),
-                CustomText(text:item.foodName ?? "burger55" , fontSize:16 , fontWeight: FontWeight.w500,overflow:TextOverflow.ellipsis , ),
-
-                CustomText(text: "${item.calories} Calories" ?? "55" , color: AppColor.orange, fontSize: 12 , fontWeight: FontWeight.w500,),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(text:"${item.price} LE" ?? "55" ,fontSize: 16,fontWeight: FontWeight.w700, ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColor.orange,
-                        borderRadius: BorderRadius.circular(6)
-                      ),
-                      child: Icon(Icons.add , color: AppColor.white,),
-                    )
+                    CustomText(text:item.foodName ?? "burger55" , fontSize:16 , fontWeight: FontWeight.w500,overflow:TextOverflow.ellipsis , ),
+
+                    CustomText(text: "${item.calories} Calories" ?? "55" , color: AppColor.orange, fontSize: 12 , fontWeight: FontWeight.w500,),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText(text:"${item.price} LE" ?? "55" ,fontSize: 16,fontWeight: FontWeight.w700, ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColor.orange,
+                            borderRadius: BorderRadius.circular(6)
+                          ),
+                          child: Icon(Icons.add , color: AppColor.white,),
+                        )
+                      ],
+                    ),
                   ],
                 )
               ],

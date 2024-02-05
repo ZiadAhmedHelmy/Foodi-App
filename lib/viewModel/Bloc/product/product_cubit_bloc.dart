@@ -26,7 +26,9 @@ class ProductCubit extends Cubit<ProductCubitState> {
   List<BannerModel> carouselItems = [
   ];
 
-  List<FoodModel> foodList = [];
+  List<FoodModel> introFoodList = [];
+
+  List<FoodModel>allFoodList  = [];
 
   int currentIndex = 0;
 
@@ -39,9 +41,13 @@ class ProductCubit extends Cubit<ProductCubitState> {
   Future<void>getAllFoodFire()async {
     emit(LoadingAllFoodState());
     await FirebaseFirestore.instance.collection(Collection.menu).snapshots().listen((value) {
-      foodList.clear();
-      for (var doc in value.docs ) {
-         foodList.add(FoodModel.fromJason(doc.data()));
+      introFoodList.clear();
+      allFoodList.clear();
+      int i = 0 ;
+      for (var doc in value.docs) {
+        if(i<5) introFoodList.add(FoodModel.fromJason(doc.data()));
+        i++;
+        allFoodList.add(FoodModel.fromJason(doc.data()));
       }
       emit(SuccessAllFoodState());
     });
@@ -63,7 +69,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
   }
   void changeIndex(int index) {
     currentIndex = index;
-    foodList[index];
+    introFoodList[index];
     emit(ChangeIndexState());
   }
 
@@ -84,8 +90,8 @@ class ProductCubit extends Cubit<ProductCubitState> {
 
   FoodModel getRandomElement() {
     Random random = Random();
-     randomIndex = random.nextInt(foodList.length);
-    return foodList[randomIndex];
+     randomIndex = random.nextInt(introFoodList.length);
+    return introFoodList[randomIndex];
   }
 
   void guessedFoodUser(){

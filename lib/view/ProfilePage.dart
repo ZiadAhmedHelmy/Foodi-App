@@ -1,10 +1,7 @@
-import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:providerapp/Model/Components/CustomButton.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/view/LoginPage.dart';
