@@ -36,7 +36,7 @@ class MainPage extends StatelessWidget {
           appBar: AppBar(
             elevation: 0,
             backgroundColor: AppColor.white,
-            toolbarHeight: 200,
+            toolbarHeight: 150,
             flexibleSpace: Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
@@ -70,7 +70,7 @@ class MainPage extends StatelessWidget {
                                          MaterialPageRoute(
                                            builder: (context) => ProductPage(
                                              item: cubit
-                                                 .foodList[cubit.currentIndex],
+                                                 .introFoodList[cubit.currentIndex],
                                            ),
                                          ));
                                    }),
@@ -108,7 +108,7 @@ class MainPage extends StatelessWidget {
               ),
             ),
           ),
-          body: cubit.foodList == null
+          body: cubit.introFoodList == null
               ? Center(
                   child: Lottie.asset("assets/Loading.json"),
                 )
@@ -189,12 +189,12 @@ class MainPage extends StatelessWidget {
                         return Expanded(
                           flex: 2,
                           child: ListView.separated(
-                            itemCount: cubit.foodList.length,
+                            itemCount: cubit.introFoodList.length,
                             physics: const BouncingScrollPhysics(),
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               return FoodCard(
-                                  item: cubit.foodList[index],
+                                  item: cubit.introFoodList[index],
                                   onTap: () {
                                     cubit.changeIndex(index);
                                     Navigator.push(
@@ -202,7 +202,7 @@ class MainPage extends StatelessWidget {
                                         MaterialPageRoute(
                                           builder: (context) => ProductPage(
                                             item: cubit
-                                                .foodList[cubit.currentIndex],
+                                                .introFoodList[cubit.currentIndex],
                                           ),
                                         ));
                                   });
