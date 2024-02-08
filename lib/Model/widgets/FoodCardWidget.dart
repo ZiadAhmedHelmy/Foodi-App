@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/Model/Models/FoodModel.dart';
 import 'package:providerapp/utils/AppColors.dart';
 class FoodCard extends StatelessWidget {
-  
+
+
   final FoodModel item;
   void Function()? onTap;
 
@@ -19,8 +19,8 @@ class FoodCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          height: MediaQuery.of(context).size.height /2,
-          width: MediaQuery.of(context).size.width *0.7,
+          height: 250,
+          width: 260,
           decoration: BoxDecoration(
              color: AppColor.white,
             borderRadius: BorderRadius.circular(8),
@@ -40,50 +40,43 @@ class FoodCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 5,
-                   decoration: BoxDecoration(
-                     color: AppColor.lightOrange,
-                     borderRadius: BorderRadius.circular(8),
-                   ),
+                Container(
+                  width: 250,
+                  height: MediaQuery.of(context).size.height / 6,
+                 decoration: BoxDecoration(
+                   color: AppColor.lightOrange,
+                   borderRadius: BorderRadius.circular(8),
+                 ),
 
 
-                    child: Center(
-                      child: Hero(
-                          tag:item.foodImage! ,
-                          child: CachedNetworkImage(
-                            imageUrl: item.foodImage!,
-                            placeholder: (context, url) =>  LoadingAnimationWidget.staggeredDotsWave(
-                              color: Colors.white,
-                              size: 100,
-                            ),
+                  child: Center(
+                    child: Hero(
+                        tag:item.foodImage! ,
+                        child: CachedNetworkImage(
+                          imageUrl: item.foodImage!,
+                          placeholder: (context, url) =>  LoadingAnimationWidget.staggeredDotsWave(
+                            color: Colors.white,
+                            size: 100,
                           ),
-                      ),
+                        ),
                     ),
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                CustomText(text:item.foodName ?? "burger55" , fontSize:16 , fontWeight: FontWeight.w500,overflow:TextOverflow.ellipsis , ),
+
+                CustomText(text: "${item.calories} Calories" ?? "55" , color: AppColor.orange, fontSize: 12 , fontWeight: FontWeight.w500,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText(text:item.foodName ?? "burger55" , fontSize:16 , fontWeight: FontWeight.w500,overflow:TextOverflow.ellipsis , ),
-
-                    CustomText(text: "${item.calories} Calories" ?? "55" , color: AppColor.orange, fontSize: 12 , fontWeight: FontWeight.w500,),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomText(text:"${item.price} LE" ?? "55" ,fontSize: 16,fontWeight: FontWeight.w700, ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColor.orange,
-                            borderRadius: BorderRadius.circular(6)
-                          ),
-                          child: Icon(FluentIcons.add_12_filled , color: AppColor.white,),
-                        )
-                      ],
-                    ),
+                    CustomText(text:"${item.price} LE" ?? "55" ,fontSize: 16,fontWeight: FontWeight.w700, ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.orange,
+                        borderRadius: BorderRadius.circular(6)
+                      ),
+                      child: Icon(Icons.add , color: AppColor.white,),
+                    )
                   ],
                 )
               ],
