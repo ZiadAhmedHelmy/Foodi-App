@@ -10,8 +10,8 @@ import 'package:providerapp/viewModel/Bloc/UserProfile/profile_cubit.dart';
 import 'package:providerapp/viewModel/Bloc/auth/auth_cubit_bloc.dart';
 import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
 import 'package:providerapp/viewModel/Bloc/product/product_cubit_bloc.dart';
+import 'package:providerapp/viewModel/data/SharedKeys.dart';
 import 'package:providerapp/viewModel/data/SharedPrefrences.dart';
-
 import 'viewModel/Bloc/Categories/category_cubit_bloc.dart';
 
 Future<void> main() async {
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           create: (context) => NavigationCubit(),
         ),
         BlocProvider(
-          create: (context) => BasketCubit(),
+          create: (context) => OrderCubit(),
         ),
         BlocProvider(
           create: (context) => ButtonCounterCubit(),

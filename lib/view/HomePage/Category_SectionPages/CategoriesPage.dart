@@ -1,12 +1,11 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:providerapp/Model/widgets/CategoryWidget.dart';
-import 'package:providerapp/view/Products_CategoryPage.dart';
+import 'package:providerapp/view/HomePage/Category_SectionPages/Products_CategoryPage.dart';
 import 'package:providerapp/viewModel/Bloc/Categories/category_cubit_bloc.dart';
-import '../Model/Components/CustumText.dart';
-import '../utils/AppColors.dart';
+import '../../../Model/Components/CustumText.dart';
+import '../../../utils/AppColors.dart';
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});
 

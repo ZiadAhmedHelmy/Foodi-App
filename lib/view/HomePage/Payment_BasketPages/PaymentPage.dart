@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:providerapp/Model/Components/CustomButton.dart';
-import 'package:providerapp/Model/widgets/PaymentMethodCard.dart';
+import 'package:providerapp/view/HomePage/Payment_BasketPages/widget/PaymentMethodCard.dart';
 import 'package:providerapp/utils/AppColors.dart';
-import 'package:providerapp/view/HomePage.dart';
-import 'package:providerapp/view/MainPage.dart';
+import 'package:providerapp/view/HomePage/HomePage.dart';
+import 'package:providerapp/view/HomePage/MainPage.dart';
 import 'package:providerapp/viewModel/Bloc/BottomNavigationCubit/NavigationBloc.dart';
 import 'package:providerapp/viewModel/Bloc/ButtonCounterCubit/button_counter_cubit.dart';
 import 'package:providerapp/viewModel/Bloc/UserProfile/profile_cubit.dart';
 import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
 import 'package:quickalert/quickalert.dart';
 
-import '../Model/Components/CustumText.dart';
+import '../../../Model/Components/CustumText.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var cubit = ProfileCubit.get(context);
+    var cubit = OrderCubit.get(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.orange,
@@ -67,12 +68,11 @@ class PaymentPage extends StatelessWidget {
                 textColor: AppColor.white,
                 onTap: () {
                   if (cubit.selectPaymentIndex != -1) {
-                    // QuickAlert.show(
-                    //     context: context, type: QuickAlertType.success,title: "Congratulations!",
-                    //     text: "Your order has been confirmed successfully",
-                    //     textAlignment: TextAlign.center,
-                    //
-                    // );
+
+
+                    String OrderDate = DateFormat("MMM").format(DateTime.now()).toString();
+
+                    cubit.setOrder(OrderDate);
                     showDialog(
                       context: context,
                       builder: (context){
@@ -98,6 +98,8 @@ class PaymentPage extends StatelessWidget {
                           ],
                         );
                       },
+
+
                     );
                   } else {
                     Fluttertoast.showToast(msg: "Select a Payment Method");

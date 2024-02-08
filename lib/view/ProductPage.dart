@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:motion_toast/motion_toast.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:providerapp/Model/Components/Add_RemoveBtn.dart';
 import 'package:providerapp/Model/Components/CustomButton.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
@@ -10,7 +12,6 @@ import 'package:providerapp/Model/Models/BasketFoodModel.dart';
 import 'package:providerapp/utils/AppColors.dart';
 import 'package:providerapp/viewModel/Bloc/ButtonCounterCubit/button_counter_cubit.dart';
 import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
-import 'package:providerapp/viewModel/Bloc/product/product_cubit_bloc.dart';
 
 class ProductPage extends StatelessWidget {
   final FoodModel item;
@@ -18,22 +19,19 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var OrderC = BasketCubit.get(context);
+    var OrderC = OrderCubit.get(context);
     var CounterC = ButtonCounterCubit.get(context);
     return BlocProvider(
-      create: (context) => BasketCubit(),
+      create: (context) => OrderCubit(),
       child: Scaffold(
         backgroundColor: AppColor.orange,
         appBar: AppBar(
+          leading: InkWell( onTap: (){
+            Navigator.pop(context);
+          }, child: Icon(FluentIcons.arrow_autofit_up_24_regular , color: AppColor.white,)),
           backgroundColor: AppColor.orange,
-          title: Text(item.foodName!, maxLines: 2),
+          title: Text(item.foodName!, maxLines: 2 ,style: TextStyle(color: AppColor.white)),
           elevation: 0,
-          actions: const [
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Icon(Icons.favorite),
-            ),
-          ],
         ),
         body: Column(
           children: [
@@ -42,12 +40,17 @@ class ProductPage extends StatelessWidget {
               child: Center(
                   child: Hero(
                 tag: item.foodImage!,
-                child: Image.network(
-                  item.foodImage!,
-                  width: 150,
+                child: CachedNetworkImage(
+                  height: 150,
+                    imageUrl: "${item.foodImage}",
+                  placeholder: (context, url) {
+                    return LoadingAnimationWidget.beat(color: AppColor.white, size: 50);
+                  },
+
+                  ),
                 ),
               )),
-            ),
+
             Expanded(
               flex: 3,
               child: Container(
@@ -62,7 +65,7 @@ class ProductPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Add_RemoveBtn(),
+                    const Add_RemoveBtn(),
 
                     // Product Price
                     CustomText(
@@ -118,7 +121,7 @@ class ProductPage extends StatelessWidget {
                         color: AppColor.orange,
                         textColor: AppColor.white,
                         btnHeight: 60,
-                        icon: Icons.shopping_basket_outlined,
+                        icon: FluentIcons.cart_16_filled,
                         iconColor: AppColor.white,
                         onTap: () {
                           if (ButtonCounterCubit.get(context).productCount !=

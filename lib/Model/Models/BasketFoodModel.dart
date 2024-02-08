@@ -6,4 +6,13 @@ class BasketFoodModel{
   double?Price;
 
   BasketFoodModel({this.foodName, this.foodImage, this.foodCount, this.Price , this.Calories});
+
+  Map<String, dynamic> toJson() {
+    return {
+      "Price":Price,
+      "foodCount":foodCount,
+      "foodName":foodName,
+    };
+  }
+
 }

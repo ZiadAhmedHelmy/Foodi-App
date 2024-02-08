@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/Model/Shimmers/CategoryShimmer.dart';
-import 'package:providerapp/Model/widgets/ProductCategoryWidget.dart';
+import 'package:providerapp/view/HomePage/Category_SectionPages/widget/ProductCategoryWidget.dart';
 import 'package:providerapp/utils/AppColors.dart';
+import 'package:providerapp/view/ProductPage.dart';
 import 'package:providerapp/viewModel/Bloc/Categories/category_cubit_bloc.dart';
+import 'package:providerapp/viewModel/Bloc/product/product_cubit_bloc.dart';
 
-import '../Model/Models/FoodModel.dart';
+import '../../../Model/Models/FoodModel.dart';
 
 class ProductsCategoryPage extends StatefulWidget {
   const ProductsCategoryPage({super.key});
@@ -84,9 +87,7 @@ class _ProductsCategoryPageState extends State<ProductsCategoryPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Center(
-                              child: CircularProgressIndicator(
-                            color: AppColor.orange,
-                          )),
+                              child: LoadingAnimationWidget.bouncingBall(color: AppColor.orange, size: 50),)
                         ],
                       )
                     : Column(
@@ -107,7 +108,9 @@ class _ProductsCategoryPageState extends State<ProductsCategoryPage> {
                               itemCount:foundList.length,
                               itemBuilder: (context, index) {
                                 return ProductCategory(
-                                    item: foundList[index]);
+                                    item: foundList[index]
+                                    ,index: index,
+                                );
                               },
                               separatorBuilder: (context, index) =>
                                   const SizedBox(

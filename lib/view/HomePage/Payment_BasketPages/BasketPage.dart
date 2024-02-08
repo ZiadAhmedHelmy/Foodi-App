@@ -11,7 +11,7 @@ import 'package:providerapp/Model/Components/EmptyOrderSection.dart';
 import 'package:providerapp/Model/Models/FoodModel.dart';
 import 'package:providerapp/Model/widgets/foodCardBasket.dart';
 import 'package:providerapp/utils/AppColors.dart';
-import 'package:providerapp/view/InformationOrderPage.dart';
+import 'package:providerapp/view/HomePage/Payment_BasketPages/InformationOrderPage.dart';
 import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
 
 class BasketScreen extends StatelessWidget {
@@ -24,14 +24,14 @@ class BasketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = BasketCubit.get(context);
+    var cubit = OrderCubit.get(context);
 
     // Importnat
-    List<BasketCubit> itemBlocs = List.generate(
-        BasketCubit.get(context).readyOrdersList.length,
-        (_) => BasketCubit());
+    List<OrderCubit> itemBlocs = List.generate(
+        OrderCubit.get(context).readyOrdersList.length,
+        (_) => OrderCubit());
 
-    return BlocConsumer<BasketCubit, OrderCubitState>(
+    return BlocConsumer<OrderCubit, OrderCubitState>(
   listener: (context, state) {
     // TODO: implement listener
   },
@@ -48,19 +48,19 @@ class BasketScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: BasketCubit.get(context).readyOrdersList.isEmpty ? const EmptyOrderSection() : Column(
+      body: OrderCubit.get(context).readyOrdersList.isEmpty ? const EmptyOrderSection() : Column(
         children: [
           Expanded(
             flex: 2,
             child: ListView.builder(
                 itemCount:
-                    BasketCubit.get(context).readyOrdersList.length ?? 5,
+                    OrderCubit.get(context).readyOrdersList.length ?? 5,
                 scrollDirection: Axis.vertical,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final item = cubit.readyOrdersList[index];
                   ///// Important!!
-                  itemBlocs[index].productCount = BasketCubit.get(context)
+                  itemBlocs[index].productCount = OrderCubit.get(context)
                       .readyOrdersList[index]
                       .foodCount!;
                   return Slidable(
@@ -71,8 +71,8 @@ class BasketScreen extends StatelessWidget {
                          backgroundColor: Colors.red,
                           icon: Icons.delete,
                           onPressed: (context) {
-                            BasketCubit.get(context).removeProduct(index);
-                            BasketCubit.get(context).totalPriceDecrease(item.Price!, item.foodCount!);
+                            OrderCubit.get(context).removeProduct(index);
+                            OrderCubit.get(context).totalPriceDecrease(item.Price!, item.foodCount!);
                           },
                           label: "Remove",
 
@@ -80,7 +80,7 @@ class BasketScreen extends StatelessWidget {
                     ] ),
 
                     child: FoodCardBasket(
-                      item: BasketCubit.get(context).readyOrdersList[index],
+                      item: OrderCubit.get(context).readyOrdersList[index],
                       itemBloc: itemBlocs[index],
                       index: index,
                     ),
@@ -153,7 +153,7 @@ class BasketScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     CustomText(
-                        text: "${BasketCubit.totalPrice}",
+                        text: "${OrderCubit.totalPrice}",
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ],
@@ -186,7 +186,7 @@ class BasketScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     CustomText(
-                      text: "${BasketCubit.totalPrice + 20}",
+                      text: "${OrderCubit.totalPrice + 20}",
                       color: AppColor.orange,
                       fontSize: 20,
                       fontWeight: FontWeight.w500,

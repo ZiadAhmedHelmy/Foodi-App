@@ -8,13 +8,13 @@ import '../Components/CustumText.dart';
 
 class FoodCardBasket extends StatelessWidget {
   final BasketFoodModel item;
-  final BasketCubit itemBloc;
+  final OrderCubit itemBloc;
   final int index;
   const FoodCardBasket({super.key, required this.item, required this.itemBloc, required this.index ,});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BasketCubit, OrderCubitState>(
+    return BlocBuilder<OrderCubit, OrderCubitState>(
         bloc: itemBloc,
       builder: (context, state) {
         return Padding(

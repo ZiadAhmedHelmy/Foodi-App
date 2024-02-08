@@ -3,4 +3,5 @@ class Collection{
    static String foodBanner = "FoodBanner";
    static String categories = "Categories";
    static String users = "Users";
+   static String orders = "Orders";
 }

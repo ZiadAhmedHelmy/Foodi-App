@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/Model/Models/FoodModel.dart';
 import 'package:providerapp/utils/AppColors.dart';
 class FoodCard extends StatelessWidget {
-
-
+  
   final FoodModel item;
   void Function()? onTap;
 
@@ -80,7 +80,7 @@ class FoodCard extends StatelessWidget {
                             color: AppColor.orange,
                             borderRadius: BorderRadius.circular(6)
                           ),
-                          child: Icon(Icons.add , color: AppColor.white,),
+                          child: Icon(FluentIcons.add_12_filled , color: AppColor.white,),
                         )
                       ],
                     ),

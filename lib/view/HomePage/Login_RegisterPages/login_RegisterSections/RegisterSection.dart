@@ -4,7 +4,7 @@ import 'package:providerapp/Model/Components/CustomTextForm.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/viewModel/Bloc/auth/auth_cubit_bloc.dart';
 
-import '../../utils/AppColors.dart';
+import '../../../../utils/AppColors.dart';
 class RegisterSection extends StatelessWidget {
   const RegisterSection({super.key});
 
@@ -16,7 +16,7 @@ class RegisterSection extends StatelessWidget {
         key: AuthCubit.get(context).registerKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment:MainAxisAlignment.spaceAround,
           children: [
             const CustomText(
               text: "Full Name",
@@ -24,7 +24,6 @@ class RegisterSection extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
             CustomTextField(
-
                 controller: AuthCubit.get(context).userName,
                 hintText: "name",
                 validator: (value) {

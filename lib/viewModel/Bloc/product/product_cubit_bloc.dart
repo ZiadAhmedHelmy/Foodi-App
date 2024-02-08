@@ -16,11 +16,9 @@ import '../../../Model/Models/FoodModel.dart';
 part 'product_cubit_state.dart';
 
 class ProductCubit extends Cubit<ProductCubitState> {
-  ProductCubit() : super(ProductCubitInitial()) ;
+  ProductCubit() : super(ProductCubitInitial());
 
   static ProductCubit get(context) => BlocProvider.of(context);
-
-
 
 
   List<BannerModel> carouselItems = [
@@ -28,24 +26,34 @@ class ProductCubit extends Cubit<ProductCubitState> {
 
   List<FoodModel> introFoodList = [];
 
-  List<FoodModel>allFoodList  = [];
+  List<FoodModel>allFoodList = [];
 
   int currentIndex = 0;
 
-  double TotalPrice = 0 ;
+
+  //////
+
+  List<FoodModel> results = [];
+
+  TextEditingController enteredKeywordSearch = TextEditingController();
+
+  List<FoodModel> previousResults = [
+  ]; // Added variable to store previous results
 
 
   FoodModel guessedFood = FoodModel();
   int randomIndex = 0;
 
-  Future<void>getAllFoodFire()async {
+  Future<void> getAllFoodFire() async {
     emit(LoadingAllFoodState());
-    await FirebaseFirestore.instance.collection(Collection.menu).snapshots().listen((value) {
+    await FirebaseFirestore.instance.collection(Collection.menu)
+        .snapshots()
+        .listen((value) {
       introFoodList.clear();
       allFoodList.clear();
-      int i = 0 ;
+      int i = 0;
       for (var doc in value.docs) {
-        if(i<5) introFoodList.add(FoodModel.fromJason(doc.data()));
+        if (i < 5) introFoodList.add(FoodModel.fromJason(doc.data()));
         i++;
         allFoodList.add(FoodModel.fromJason(doc.data()));
       }
@@ -54,26 +62,24 @@ class ProductCubit extends Cubit<ProductCubitState> {
   }
 
 
-
-
-  Future<void>getBannerFoodFire()async {
+  Future<void> getBannerFoodFire() async {
     emit(LoadingBannerFoodState());
-    FirebaseFirestore.instance.collection(Collection.foodBanner).snapshots().listen((value) {
+    FirebaseFirestore.instance.collection(Collection.foodBanner)
+        .snapshots()
+        .listen((value) {
       carouselItems.clear();
       for (var doc in value.docs) {
-          carouselItems.add(BannerModel.fromJason(doc.data()));
-
+        carouselItems.add(BannerModel.fromJason(doc.data()));
       }
       emit(SuccessBannerFoodState());
     });
   }
+
   void changeIndex(int index) {
     currentIndex = index;
     introFoodList[index];
     emit(ChangeIndexState());
   }
-
-
 
 
   // Future<void> guessFoodForUser()async {
@@ -90,20 +96,35 @@ class ProductCubit extends Cubit<ProductCubitState> {
 
   FoodModel getRandomElement() {
     Random random = Random();
-     randomIndex = random.nextInt(introFoodList.length);
+    randomIndex = random.nextInt(introFoodList.length);
     return introFoodList[randomIndex];
   }
 
-  void guessedFoodUser(){
+  void guessedFoodUser() {
     guessedFood = getRandomElement();
     emit(GetRandomFoodUserState());
   }
 
 
+  void filterItems(String enteredKeyword) {
+    enteredKeywordSearch.addListener(() {
+      String enteredKeyword = enteredKeywordSearch.text;
 
+      if (enteredKeyword.isEmpty) {
+        results = List.from(allFoodList);
+        emit(EmptySearchingState());
+      } else {
+        results = allFoodList
+            .where((item) =>
+            item.foodName!.toLowerCase().contains(enteredKeyword.toLowerCase()))
+            .toList();
+        emit(ChangingSearchingState());
 
-
-
+      }
+      allFoodList = results;
+      emit(SearchingDoneState());
+    });
+  }
 
 
 }

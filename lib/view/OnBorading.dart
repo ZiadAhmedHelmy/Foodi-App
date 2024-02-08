@@ -3,11 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:providerapp/utils/AppColors.dart';
 import 'package:providerapp/Model/Components/CustomButton.dart';
-import 'package:providerapp/view/HomePage.dart';
-import 'package:providerapp/view/LoginPage.dart';
+import 'package:providerapp/view/HomePage/HomePage.dart';
+import 'package:providerapp/viewModel/data/SharedKeys.dart';
+import 'package:providerapp/viewModel/data/SharedPrefrences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../Model/Models/ContentModel.dart';
 import '../Model/Components/CustumText.dart';
+import 'HomePage/Login_RegisterPages/LoginPage.dart';
 
 class Onbording extends StatefulWidget {
   @override
@@ -21,6 +23,7 @@ class _OnbordingState extends State<Onbording> {
   @override
   void initState() {
     _controller = PageController(initialPage: 0);
+    LocalData.setData(key: SharedKey.firstTime, value: false);
     super.initState();
   }
 

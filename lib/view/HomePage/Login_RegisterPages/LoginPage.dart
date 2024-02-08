@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:providerapp/utils/AppColors.dart';
 import 'package:providerapp/Model/Components/CustomDivider.dart';
-import 'package:providerapp/Model/login_Register/LoginSection.dart';
-import 'package:providerapp/Model/login_Register/RegisterSection.dart';
+
 import 'package:providerapp/Model/Components/AppLogo.dart';
+
+import 'login_RegisterSections/LoginSection.dart';
+import 'login_RegisterSections/RegisterSection.dart';
+
+
 
 class Login_Register_Page extends StatelessWidget {
   Login_Register_Page({super.key});
@@ -41,9 +45,10 @@ class Login_Register_Page extends StatelessWidget {
             ),
           ),
         ),
-             body: Column(
+             body: const Column(
               children: [
-               const Expanded(
+               Expanded(
+                 flex: 4,
               child: TabBarView(
                 children: [
                   //Login Section
@@ -53,27 +58,8 @@ class Login_Register_Page extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                 // Divider ____________
-                  const CustomDivider(),
-                 const SizedBox(height: 5,),
-                 Container(
-                   padding: const EdgeInsets.all(12),
-                   decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(8),
-                   border: Border.all(
-                      width: 1,
-                      color: AppColor.grey,
-                   ),
-                  ),
-                     child: Image.asset("assets/Icons/Google logo.png"),
-              ),
-                ],
-              ),
-            )
+
+
           ],
         ),
       ),

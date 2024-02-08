@@ -26,24 +26,4 @@ class UpadteImageSuccess extends ProfileState{}
 
 
 
-// ShippingState  Set
-class LoadingSetShippingInfo extends ProfileState{}
-class SuccessSetShippingInfo extends ProfileState{}
-
-
-// ShippingState Get
-class LoadingGetShippingInfo extends ProfileState{}
-class SuccessGetShippingInfo extends ProfileState{}
-
-
-// SelectedInfoState
-
-class SuccessSelectedInfo extends ProfileState{}
-
-
-
-// Selected Payment Method
-
-class SelectedPaymentMethod extends ProfileState{}
-
 

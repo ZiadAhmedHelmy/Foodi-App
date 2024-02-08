@@ -9,7 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:providerapp/viewModel/Bloc/BottomNavigationCubit/NavigationBloc.dart';
 import 'package:providerapp/viewModel/Bloc/product/product_cubit_bloc.dart';
 
-import '../Model/Components/SeachBar.dart';
+import '../../Model/Components/SeachBar.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
               ),
 
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.ac_unit),
                 label: 'Profile',
               ),
             ],

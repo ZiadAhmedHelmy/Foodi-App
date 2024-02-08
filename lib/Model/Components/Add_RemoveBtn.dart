@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
@@ -35,7 +36,7 @@ class Add_RemoveBtn extends StatelessWidget {
                                 .productCountRemove();
                           },
                           icon: const Icon(
-                            Icons.remove,
+                            FluentIcons.delete_12_filled,
                             color: Colors.black,
                             size: 16,
                           ))),
@@ -48,8 +49,8 @@ class Add_RemoveBtn extends StatelessWidget {
                             ButtonCounterCubit.get(context)
                                 .productCountAdd();
                           },
-                          icon: const Icon(
-                            Icons.add,
+                          icon:  const Icon(
+                            FluentIcons.add_12_filled,
                             color: Colors.white,
                             size: 16,
                           ))),

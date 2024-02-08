@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:providerapp/Model/Components/CustomButton.dart';
-import 'package:providerapp/Model/widgets/ShippingCardInfo.dart';
-import 'package:providerapp/view/PaymentPage.dart';
+import 'package:providerapp/view/HomePage/Category_SectionPages/widget/ShippingCardInfo.dart';
+import 'package:providerapp/view/HomePage/Payment_BasketPages/PaymentPage.dart';
+import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
 import 'package:quickalert/quickalert.dart';
-import '../Model/Components/CustomTextForm.dart';
-import '../Model/Components/CustumText.dart';
-import '../utils/AppColors.dart';
-import '../viewModel/Bloc/UserProfile/profile_cubit.dart';
+import '../../../Model/Components/CustomTextForm.dart';
+import '../../../Model/Components/CustumText.dart';
+import '../../../utils/AppColors.dart';
+import '../../../viewModel/Bloc/UserProfile/profile_cubit.dart';
 
 class InfromationOrderPage extends StatelessWidget {
   InfromationOrderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var cubit = ProfileCubit.get(context);
+    var cubit = OrderCubit.get(context);
     return BlocProvider.value(
       value: cubit..getUserShippingInfo(),
       child: Scaffold(
@@ -30,7 +31,7 @@ class InfromationOrderPage extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: BlocConsumer<ProfileCubit, ProfileState>(
+        body: BlocConsumer<OrderCubit, OrderCubitState>(
           listener: (context, state) {
             // TODO: implement listener
           },

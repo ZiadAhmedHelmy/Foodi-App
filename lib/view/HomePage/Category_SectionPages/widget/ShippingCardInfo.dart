@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/Model/Models/ShippingInfoModel.dart';
 import 'package:providerapp/utils/AppColors.dart';
+import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
 
-import '../../viewModel/Bloc/UserProfile/profile_cubit.dart';
+import '../../../../viewModel/Bloc/UserProfile/profile_cubit.dart';
 
 class ShippingCardInfo extends StatelessWidget {
   final ShippingInfoModel item;
@@ -13,8 +14,8 @@ class ShippingCardInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = ProfileCubit.get(context);
-    return BlocConsumer<ProfileCubit, ProfileState>(
+    var cubit = OrderCubit.get(context);
+    return BlocConsumer<OrderCubit, OrderCubitState>(
   listener: (context, state) {
     // TODO: implement listener
   },

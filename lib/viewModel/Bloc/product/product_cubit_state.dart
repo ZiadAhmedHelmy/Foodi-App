@@ -24,3 +24,12 @@ class ChangeIndexState extends ProductCubitState {}
 // guessed FoodUser
 
 class GetRandomFoodUserState extends ProductCubitState{}
+
+
+
+
+// searchingDoneState
+class SearchingDoneState extends ProductCubitState{}
+class EmptySearchingState extends ProductCubitState{}
+class ChangingSearchingState extends ProductCubitState{}
+

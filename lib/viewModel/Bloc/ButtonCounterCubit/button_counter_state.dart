@@ -7,3 +7,7 @@ class ButtonCounterInitial extends ButtonCounterState {}
 
 class AddFoodCountState extends ButtonCounterState {}
 class RemoveFoodCountState extends ButtonCounterState {}
+
+
+
+class ShowPassWordOrNot extends ButtonCounterState{}

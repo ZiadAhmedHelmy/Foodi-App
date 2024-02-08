@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/utils/AppColors.dart';
 import 'package:providerapp/viewModel/Bloc/UserProfile/profile_cubit.dart';
+import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
 class PaymentMethodCard extends StatelessWidget {
 
  final String text;
@@ -11,8 +12,8 @@ class PaymentMethodCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = ProfileCubit.get(context);
-    return BlocConsumer<ProfileCubit, ProfileState>(
+    var cubit = OrderCubit.get(context);
+    return BlocConsumer<OrderCubit, OrderCubitState>(
   listener: (context, state) {
     // TODO: implement listener
   },

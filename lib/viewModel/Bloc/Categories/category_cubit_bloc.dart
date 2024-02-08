@@ -53,11 +53,6 @@ class CategoryCubit extends Cubit<CategoryCubitState> {
 
   }
 
-  void changeIndex(int index) {
-    currentIndex = index;
-    productsCategoryList[currentIndex];
-    emit(ChangeIndexState());
-  }
 
   void clearData() {
     productsCategoryList.clear();

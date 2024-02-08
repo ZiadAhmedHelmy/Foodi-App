@@ -14,16 +14,19 @@ class CustomTextField extends StatelessWidget {
   final bool? readOnly;
   final String? Function(String?)? validator;
   final void Function()? onTap;
+  final void Function(String)? onChanged;
+  final Widget? suffixIcon;
+  final bool? obscureText;
   CustomTextField({
-    required this.controller,
     required this.hintText,
+    required this.controller,
     this.icon,
     this.iconColor,
     this.borderColor,
     this.validator,
     this.height,
     this.maxLine,
-    this.keyboardType, this.readOnly, this.onTap, // Added keyboardType parameter
+    this.keyboardType, this.readOnly, this.onTap, this.onChanged, this.suffixIcon, this.obscureText, // Added keyboardType parameter
   });
 
   @override
@@ -33,13 +36,16 @@ class CustomTextField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(5),
         child: TextFormField(
+          obscureText: obscureText ?? false,
+          onChanged:onChanged ,
           onTap: onTap ?? (){},
           controller: controller,
           readOnly: readOnly ?? false,
           decoration: InputDecoration(
             labelText: hintText,
             prefixIcon: icon,
-            enabledBorder: OutlineInputBorder(
+            suffixIcon:suffixIcon,
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
                 width: 2,
