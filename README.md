@@ -1,4 +1,4 @@
-# providerapp
+# Foodi app
 
 A new Flutter project.
 
