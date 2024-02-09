@@ -2,7 +2,6 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:lottie/lottie.dart';
 import 'package:providerapp/Model/Components/CustomTextForm.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/Model/widgets/FoodCardWidget.dart';
@@ -153,7 +152,7 @@ class MainPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const CustomText(
-                          text: "Categories",
+                          text: " Categories",
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),

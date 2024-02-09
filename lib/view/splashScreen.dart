@@ -7,6 +7,7 @@ import 'package:providerapp/view/HomePage/Login_RegisterPages/LoginPage.dart';
 import 'package:providerapp/view/OnBorading.dart';
 import 'package:providerapp/viewModel/data/SharedKeys.dart';
 import 'package:providerapp/viewModel/data/SharedPrefrences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,6 +17,31 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+
+  bool _showOnboarding = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkFirstLaunch();
+  }
+
+  _checkFirstLaunch() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstLaunch = prefs.getBool('firstLaunch') ?? true;
+
+    setState(() {
+      _showOnboarding = isFirstLaunch;
+    });
+
+    if (isFirstLaunch) {
+      prefs.setBool('firstLaunch', false);
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return  AnimatedSplashScreen(
@@ -30,27 +56,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
             ],
           ),
-          nextScreen:( LocalData.getData(key: SharedKey.firstTime) ) == true ? Onbording()  : ( LocalData.getData(key: SharedKey.uid) != null) ?      HomePage() :  Login_Register_Page(),
+          nextScreen: _showOnboarding ? Onbording() :  ( LocalData.getData(key: SharedKey.uid) != null) ?      HomePage() :  const Login_Register_Page(),
           animationDuration: const Duration(seconds: 2),
         splashTransition: SplashTransition.fadeTransition,
       );
   }
 }
-
-
-
-// decoration: const BoxDecoration(
-// gradient: LinearGradient(
-// begin: Alignment.topCenter,
-// end: Alignment.bottomCenter,
-// colors: [
-// Color.fromRGBO(255, 92, 40, 1),
-// Color.fromRGBO(255, 129, 89, 1),
-// Color.fromRGBO(255, 92, 40, 1),
-// ],
-// ),
-// ),
-
-
-
-

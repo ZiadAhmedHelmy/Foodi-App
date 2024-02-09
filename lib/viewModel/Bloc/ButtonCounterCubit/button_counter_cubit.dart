@@ -8,7 +8,8 @@ class ButtonCounterCubit extends Cubit<ButtonCounterState> {
   ButtonCounterCubit() : super(ButtonCounterInitial());
   static ButtonCounterCubit get(context) => BlocProvider.of(context);
   int productCount = 0 ;
-  bool isShowen = true;
+  bool isShowenPassLogin = true;
+  bool isShowenPassRegister = true;
   void productCountAdd(){
     if(productCount== 30){
       //Fluttertoast.showToast(msg: "That is Maximum You get from this Product");
@@ -28,8 +29,13 @@ class ButtonCounterCubit extends Cubit<ButtonCounterState> {
   }
 
   void showPassWord(){
-     isShowen=!isShowen;
+     isShowenPassLogin=!isShowenPassLogin;
      emit(ShowPassWordOrNot());
+  }
+
+  void showPassWordRegister(){
+    isShowenPassRegister=!isShowenPassRegister;
+    emit(ShowPassWordOrNot());
   }
 
 

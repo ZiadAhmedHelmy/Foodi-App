@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:providerapp/firebase_options.dart';
-import 'package:providerapp/splashScreen.dart';
+import 'package:providerapp/view/HomePage/Login_RegisterPages/LoginPage.dart';
+import 'package:providerapp/view/OnBorading.dart';
+import 'package:providerapp/view/splashScreen.dart';
 import 'package:providerapp/viewModel/Bloc/BottomNavigationCubit/NavigationBloc.dart';
 import 'package:providerapp/viewModel/Bloc/ButtonCounterCubit/button_counter_cubit.dart';
 import 'package:providerapp/viewModel/Bloc/Observer.dart';
@@ -22,6 +24,7 @@ Future<void> main() async {
   );
   LocalData.init();
   // LocalData.clearData();
+
   runApp(
     const MyApp(), // Wrap your app
   );

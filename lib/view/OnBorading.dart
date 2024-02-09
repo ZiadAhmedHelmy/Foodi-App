@@ -133,41 +133,19 @@ class _OnbordingState extends State<Onbording> {
             const SizedBox(
               height: 25,
             ),
-            ...[
-              CustomButton(
-                  text: "Next",
-                  btnHeight: 60,
-                  color: const Color(0xFFFF5C28),
-                  textColor: Colors.white,
-                  onTap: () {
-                    if (currentIndex == contents.length - 1) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) =>  Login_Register_Page(),
-                        ),
-                      );
-                    }
-                    _controller.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeOut,
-                    );
-                  }),
-              const SizedBox(
-                height: 25,
-              ),
-              if (currentIndex == 0)
-                CustomButton(
-                    text: "",
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomButton(
+                    text: "Next",
                     btnHeight: 60,
-                    color: Colors.transparent,
+                    color: const Color(0xFFFF5C28),
                     textColor: Colors.white,
                     onTap: () {
                       if (currentIndex == contents.length - 1) {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => HomePage(),
+                            builder: (_) =>  const Login_Register_Page(),
                           ),
                         );
                       }
@@ -176,17 +154,29 @@ class _OnbordingState extends State<Onbording> {
                         curve: Curves.easeOut,
                       );
                     }),
-            ],
-            if (currentIndex >= 1)
-                 CustomButton(text: "Back", color: AppColor.white, btnHeight: 60 , borderColor: AppColor.orange,borderWidth: 2 ,textColor: AppColor.orange , onTap:() {
-                   _controller.previousPage(
-                     duration: const Duration(milliseconds: 300),
-                     curve: Curves.easeOut,
-                   );
-                 }, ),
-            const SizedBox(
-              height: 25,
-            ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomButton(
+                      text: currentIndex == 0 ? " " :"Back",
+                      btnHeight: 60,
+                      color:currentIndex==0 ? Colors.transparent : AppColor.white,
+                      textColor:currentIndex==0 ? AppColor.white : AppColor.orange ,
+                      borderColor:currentIndex==0 ?AppColor.white : AppColor.orange,
+                      borderWidth: 2,
+                      onTap: () {
+                        currentIndex==0 ?  null :   _controller.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeOut,
+                        );
+
+                      }),
+                ),
+
+
           ],
         ),
       ),

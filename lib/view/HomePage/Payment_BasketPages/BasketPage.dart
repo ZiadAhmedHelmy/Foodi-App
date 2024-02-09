@@ -1,26 +1,20 @@
-import 'package:elegant_notification/elegant_notification.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:motion_toast/motion_toast.dart';
-import 'package:providerapp/Model/Components/CustomButton.dart';
-import 'package:providerapp/Model/Components/CustomTextForm.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/Model/Components/EmptyOrderSection.dart';
 import 'package:providerapp/Model/Models/FoodModel.dart';
 import 'package:providerapp/Model/widgets/foodCardBasket.dart';
 import 'package:providerapp/utils/AppColors.dart';
-import 'package:providerapp/view/HomePage/Payment_BasketPages/InformationOrderPage.dart';
 import 'package:providerapp/view/HomePage/Payment_BasketPages/widget/BasketMoneySection.dart';
 import 'package:providerapp/view/HomePage/Payment_BasketPages/widget/PromoSection.dart';
 import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
 
-class BasketScreen extends StatelessWidget {
-  late FoodModel item;
-  BasketScreen({
+class ChartScreen extends StatelessWidget {
+   FoodModel? item;
+  ChartScreen({
     super.key,
   });
 

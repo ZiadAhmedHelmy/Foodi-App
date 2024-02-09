@@ -61,9 +61,8 @@ class ProfilePage extends StatelessWidget {
                             child: CircleAvatar(
                               backgroundColor: AppColor.grey,
                               radius: 60,
-                              backgroundImage: CachedNetworkImageProvider(
+                              backgroundImage:  CachedNetworkImageProvider(
                                 "${User.User?.profileImage}",
-
                               ),
                             ),
                           ),
