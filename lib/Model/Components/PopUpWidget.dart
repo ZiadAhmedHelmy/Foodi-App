@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class PopUpWidget extends StatelessWidget {
 
-   Icon icon;
+   IconData icon;
    Color color;
    PopUpWidget({super.key, required this.icon, required this.color});
 
@@ -11,6 +11,6 @@ class PopUpWidget extends StatelessWidget {
         onTap:(){
           Navigator.pop(context);
         },
-        child: Icon(icon as IconData? ,color:color ,));
+        child: Icon(icon ,color:color ,));
   }
 }

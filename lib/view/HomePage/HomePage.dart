@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -35,22 +36,22 @@ class HomePage extends StatelessWidget {
             backgroundColor: AppColor.white,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
+                icon: Icon(FluentIcons.home_12_regular),
                 label: 'Home',
               ),
 
               BottomNavigationBarItem(
-                icon: Icon(Icons.category_rounded),
+                icon: Icon(FluentIcons.filter_12_filled),
                 label: 'Categories',
               ),
 
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_basket),
+                icon: Icon(FluentIcons.cart_16_regular),
                 label: 'Basket',
               ),
 
               BottomNavigationBarItem(
-                icon: Icon(Icons.ac_unit),
+                icon: Icon(FluentIcons.person_arrow_left_24_regular),
                 label: 'Profile',
               ),
             ],

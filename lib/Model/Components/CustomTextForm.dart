@@ -5,7 +5,7 @@ import 'package:providerapp/utils/AppColors.dart';
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
-  final Icon? icon;
+  final Widget? icon;
   final Color? iconColor;
   final Color? borderColor;
   final double? height;

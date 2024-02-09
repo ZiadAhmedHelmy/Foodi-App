@@ -63,7 +63,7 @@ class _SearchPageState extends State<SearchPage> {
       value: cubitProduct..getAllFoodFire(),
       child: Scaffold(
         appBar: AppBar(
-          leading:PopUpWidget(icon: , color:AppColor.  , ),
+          leading:PopUpWidget(icon: FluentIcons.arrow_autofit_up_24_regular, color:AppColor.white  , ),
           backgroundColor: AppColor.orange,
           elevation: 0,
           title: CustomText(

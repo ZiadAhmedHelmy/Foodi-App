@@ -8,10 +8,8 @@ class OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: AppColor.grey,
-      child: Column(
-        children: [
+      child: Container(
 
-        ],
       ),
     );
   }

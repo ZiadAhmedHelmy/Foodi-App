@@ -1,13 +1,14 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:providerapp/Model/Components/CustomTextForm.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
 import 'package:providerapp/Model/widgets/FoodCardWidget.dart';
 import 'package:providerapp/utils/AppColors.dart';
-import 'package:providerapp/view/HomePage/IntroFoodSection.dart';
-import 'package:providerapp/view/HomePage/MainBannerSection.dart';
+import 'package:providerapp/view/HomePage/MainPage/widget/IntroFoodSection.dart';
+import 'package:providerapp/view/HomePage/MainPage/widget/MainBannerSection.dart';
 import 'package:providerapp/view/ProductPage.dart';
 import 'package:providerapp/view/SearchPage.dart';
 import 'package:providerapp/viewModel/Bloc/product/product_cubit_bloc.dart';
@@ -17,7 +18,7 @@ import 'package:quickalert/models/quickalert_animtype.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-import '../../viewModel/Bloc/BottomNavigationCubit/NavigationBloc.dart';
+import '../../../viewModel/Bloc/BottomNavigationCubit/NavigationBloc.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({super.key});
@@ -32,7 +33,12 @@ class MainPage extends StatelessWidget {
         value: cubit
           ..getAllFoodFire()
           ..getBannerFoodFire(),
-        child: Scaffold(
+        child: BlocConsumer<ProductCubit, ProductCubitState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
+    return Scaffold(
           backgroundColor: AppColor.white,
           appBar: AppBar(
             elevation: 0,
@@ -99,19 +105,26 @@ class MainPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const CustomText(
+                    text:
+                    "What would you like to eat ",
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                   CustomText(
                     text:
-                    "What would you like to eat ${LocalData.getData(key: SharedKey.userName)} ?",
+                    "${LocalData.getData(key: SharedKey.userName)} ?",
                     fontSize: 24,
+                    color: AppColor.orange,
                     fontWeight: FontWeight.bold,
                   ),
                 ],
               ),
             ),
           ),
-          body: cubit.introFoodList == null
+          body: cubit.introFoodList.isEmpty
               ? Center(
-                  child: Lottie.asset("assets/Loading.json"),
+                  child: LoadingAnimationWidget.bouncingBall(color: AppColor.orange, size: 60),
                 )
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +179,9 @@ class MainPage extends StatelessWidget {
                       child: IntroFoodSection()  ),
                   ],
                 ),
-        ),
+        );
+  },
+),
       ),
     );
   }

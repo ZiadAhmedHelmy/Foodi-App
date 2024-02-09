@@ -108,6 +108,11 @@ part 'order_cubit_state.dart';
      PromoCode.clear();
   }
 
+  void clearForPaymentDone(){
+    readyOrdersList.clear();
+    totalPrice = 0;
+  }
+
   Future<void>setUserShippingInfo()async {
     emit(LoadingSetShippingInfo());
     await FirebaseFirestore.instance.collection(Collection.users).doc(LocalData.getData(key: SharedKey.uid)).collection("ShippingInfo").add({

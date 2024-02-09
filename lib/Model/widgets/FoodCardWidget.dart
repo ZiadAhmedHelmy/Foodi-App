@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
@@ -19,8 +20,8 @@ class FoodCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          height: 250,
-          width: 260,
+          height: MediaQuery.of(context).size.height / 4,
+          width: MediaQuery.of(context).size.width*0.6,
           decoration: BoxDecoration(
              color: AppColor.white,
             borderRadius: BorderRadius.circular(8),
@@ -40,25 +41,27 @@ class FoodCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 250,
-                  height: MediaQuery.of(context).size.height / 6,
-                 decoration: BoxDecoration(
-                   color: AppColor.lightOrange,
-                   borderRadius: BorderRadius.circular(8),
-                 ),
+                Expanded(
+                  child: Container(
+                    width: 250,
+                    height: MediaQuery.of(context).size.height / 6,
+                   decoration: BoxDecoration(
+                     color: AppColor.lightOrange,
+                     borderRadius: BorderRadius.circular(8),
+                   ),
 
 
-                  child: Center(
-                    child: Hero(
-                        tag:item.foodImage! ,
-                        child: CachedNetworkImage(
-                          imageUrl: item.foodImage!,
-                          placeholder: (context, url) =>  LoadingAnimationWidget.staggeredDotsWave(
-                            color: Colors.white,
-                            size: 100,
+                    child: Center(
+                      child: Hero(
+                          tag:item.foodImage! ,
+                          child: CachedNetworkImage(
+                            imageUrl: item.foodImage!,
+                            placeholder: (context, url) =>  LoadingAnimationWidget.staggeredDotsWave(
+                              color: Colors.white,
+                              size: 100,
+                            ),
                           ),
-                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -75,7 +78,7 @@ class FoodCard extends StatelessWidget {
                         color: AppColor.orange,
                         borderRadius: BorderRadius.circular(6)
                       ),
-                      child: Icon(Icons.add , color: AppColor.white,),
+                      child: Icon(FluentIcons.add_12_filled , color: AppColor.white,),
                     )
                   ],
                 )

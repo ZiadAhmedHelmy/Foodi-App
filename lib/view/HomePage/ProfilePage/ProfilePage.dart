@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:providerapp/Model/Components/CustomButton.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
+import 'package:providerapp/view/HomePage/ProfilePage/widget/OrderWidget.dart';
 import 'package:providerapp/viewModel/Bloc/auth/auth_cubit_bloc.dart';
 import 'package:providerapp/viewModel/Bloc/auth/auth_cubit_state.dart';
 import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
@@ -62,6 +63,7 @@ class ProfilePage extends StatelessWidget {
                               radius: 60,
                               backgroundImage: CachedNetworkImageProvider(
                                 "${User.User?.profileImage}",
+
                               ),
                             ),
                           ),
@@ -101,7 +103,8 @@ class ProfilePage extends StatelessWidget {
                       },
                       builder: (context, state) {
                         print(Order.orderHistory.length);
-                        return Order.orderHistory.isEmpty ? Column(
+                        return Order.orderHistory.isEmpty ?
+                          Column(
                        mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/Images/paper.png" , width: 60,),
@@ -114,19 +117,7 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ) : ListView.separated(
                             itemBuilder: (context, index) {
-                              return Card(
-                                color: AppColor.grey,
-                                child: Column(
-                                  children: [
-                                    CustomText(
-                                        text:
-                                            "${Order.orderHistory[index].address}"),
-                                    CustomText(
-                                        text:
-                                            "${Order.orderHistory[index].orderPrice}"),
-                                  ],
-                                ),
-                              );
+                              return OrderWidget(orderHistory: Order.orderHistory, index: index,);
                             },
                             separatorBuilder: (context, index) =>
                                 const SizedBox(

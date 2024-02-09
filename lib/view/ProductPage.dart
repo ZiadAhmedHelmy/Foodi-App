@@ -2,11 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:providerapp/Model/Components/Add_RemoveBtn.dart';
 import 'package:providerapp/Model/Components/CustomButton.dart';
 import 'package:providerapp/Model/Components/CustumText.dart';
+import 'package:providerapp/Model/Components/PopUpWidget.dart';
 import 'package:providerapp/Model/Models/FoodModel.dart';
 import 'package:providerapp/Model/Models/BasketFoodModel.dart';
 import 'package:providerapp/utils/AppColors.dart';
@@ -26,9 +28,7 @@ class ProductPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColor.orange,
         appBar: AppBar(
-          leading: InkWell( onTap: (){
-            Navigator.pop(context);
-          }, child: Icon(FluentIcons.arrow_autofit_up_24_regular , color: AppColor.white,)),
+          leading: PopUpWidget(icon: FluentIcons.arrow_autofit_up_24_regular , color: AppColor.white,),
           backgroundColor: AppColor.orange,
           title: Text(item.foodName!, maxLines: 2 ,style: TextStyle(color: AppColor.white)),
           elevation: 0,
@@ -65,6 +65,7 @@ class ProductPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+
                     const Add_RemoveBtn(),
 
                     // Product Price
@@ -84,9 +85,11 @@ class ProductPage extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),
+                        const Icon(FluentIcons.star_12_regular , color: Colors.yellow,),
                         const SizedBox(
                           width: 25,
                         ),
+                        SvgPicture.asset("assets/Icons/Caloris-icon (1).svg"),
                         //Calories
                         CustomText(
                             text: "${item.calories} Calories",

@@ -36,7 +36,7 @@ class Add_RemoveBtn extends StatelessWidget {
                                 .productCountRemove();
                           },
                           icon: const Icon(
-                            FluentIcons.delete_12_filled,
+                            FluentIcons.subtract_12_filled,
                             color: Colors.black,
                             size: 16,
                           ))),

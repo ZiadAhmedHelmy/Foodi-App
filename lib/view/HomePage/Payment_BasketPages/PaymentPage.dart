@@ -1,19 +1,13 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
-import 'package:providerapp/Model/Components/CustomButton.dart';
+import 'package:providerapp/view/HomePage/Payment_BasketPages/widget/ConfermationPaymentSection.dart';
 import 'package:providerapp/view/HomePage/Payment_BasketPages/widget/PaymentMethodCard.dart';
 import 'package:providerapp/utils/AppColors.dart';
-import 'package:providerapp/view/HomePage/HomePage.dart';
-import 'package:providerapp/view/HomePage/MainPage.dart';
-import 'package:providerapp/viewModel/Bloc/BottomNavigationCubit/NavigationBloc.dart';
-import 'package:providerapp/viewModel/Bloc/ButtonCounterCubit/button_counter_cubit.dart';
-import 'package:providerapp/viewModel/Bloc/UserProfile/profile_cubit.dart';
+
 import 'package:providerapp/viewModel/Bloc/order/order_cubit_bloc.dart';
-import 'package:quickalert/quickalert.dart';
 
 import '../../../Model/Components/CustumText.dart';
+import '../../../Model/Components/PopUpWidget.dart';
 
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
@@ -23,6 +17,10 @@ class PaymentPage extends StatelessWidget {
     var cubit = OrderCubit.get(context);
     return Scaffold(
       appBar: AppBar(
+        leading: PopUpWidget(
+          icon: FluentIcons.arrow_autofit_up_24_regular,
+          color: AppColor.white,
+        ),
         backgroundColor: AppColor.orange,
         elevation: 0,
         title: CustomText(
@@ -60,52 +58,9 @@ class PaymentPage extends StatelessWidget {
                     ),
                 itemCount: cubit.paymentList.length),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CustomButton(
-                text: "Confirm",
-                color: AppColor.orange,
-                textColor: AppColor.white,
-                onTap: () {
-                  if (cubit.selectPaymentIndex != -1) {
 
-
-                    String OrderDate = DateFormat("MMM").format(DateTime.now()).toString();
-
-                    cubit.setOrder(OrderDate);
-                    showDialog(
-                      context: context,
-                      builder: (context){
-                        return  Stack(
-                          children: [
-                             AlertDialog(
-                                title: const CustomText(text: "Congratulations!" ,  fontWeight: FontWeight.bold , fontSize: 24,textAlign: TextAlign.center),
-                                alignment: Alignment.center,
-                                content:  Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-
-                                    CustomText(text: "Your order has been confirmed successfully" ,textAlign: TextAlign.center,color: AppColor.grey,fontSize: 18,fontWeight: FontWeight.w600, ),
-                                    const SizedBox(height: 15,),
-                                    CustomButton(text: "Thanks", color:AppColor.orange ,textColor: AppColor.white,  onTap: (){
-
-                                    }),
-                                  ],
-                                )
-                            ),
-                            Align( alignment:Alignment.topCenter ,child:SvgPicture.asset("assets/Icons/Frame 1932.svg")),
-
-                          ],
-                        );
-                      },
-
-
-                    );
-                  } else {
-                    Fluttertoast.showToast(msg: "Select a Payment Method");
-                  }
-                }),
-          ),
+          //conformation Section
+          const ConformationPaymentSection(),
         ],
       ),
     );

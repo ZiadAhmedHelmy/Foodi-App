@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -34,7 +35,7 @@ class ProductCategory extends StatelessWidget {
               ));
         },
         child: Container(
-          height: 100,
+          height: MediaQuery.of(context).size.height/8,
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
@@ -53,8 +54,8 @@ class ProductCategory extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 10,
-                width: MediaQuery.of(context).size.width / 4,
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width / 3,
                 decoration: BoxDecoration(
                   color: AppColor.lightOrange,
                   borderRadius: const BorderRadius.all(Radius.circular(8))
@@ -95,7 +96,7 @@ class ProductCategory extends StatelessWidget {
                     color: AppColor.orange,
                     borderRadius: BorderRadius.circular(6)
                 ),
-                child: Icon(Icons.add , color: AppColor.white,),
+                child: Icon(FluentIcons.add_12_filled , color: AppColor.white,),
               )
 
             ],

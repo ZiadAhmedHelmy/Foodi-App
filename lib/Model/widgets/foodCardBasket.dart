@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -46,8 +47,9 @@ class FoodCardBasket extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Center(
-                      child: Image.network(
-                          item.foodImage ?? "assets/Images/image 56.png"),
+                      child: CachedNetworkImage(
+                        imageUrl: item.foodImage!,
+                      )
                     ),
                   ),
 
@@ -80,7 +82,7 @@ class FoodCardBasket extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               CustomText(
-                                text: "${item.Price}",
+                                text: "${item.Price} LE",
                                 fontSize: 25,
                                 fontWeight: FontWeight.w700,
                               ),

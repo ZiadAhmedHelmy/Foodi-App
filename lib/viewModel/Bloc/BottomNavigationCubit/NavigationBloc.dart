@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 
 import 'package:providerapp/view/HomePage/Payment_BasketPages/BasketPage.dart';
 import 'package:providerapp/view/HomePage/Category_SectionPages/CategoriesPage.dart';
-import 'package:providerapp/view/HomePage/MainPage.dart';
+import 'package:providerapp/view/HomePage/MainPage/MainPage.dart';
 
 import '../../../view/HomePage/ProfilePage/ProfilePage.dart';
 import '../../data/SharedKeys.dart';
