@@ -3,8 +3,17 @@
 [Foodi.pdf](https://github.com/ZiadAhmedHelmy/Foodi-App/files/14250634/Foodi.pdf)
 
 
+App Structure:
+    MVVM Pattern....
+    ![MVVM](https://github.com/ZiadAhmedHelmy/Foodi-App/assets/145056091/ab9a2fbf-e264-4529-8563-0dab56f0e3ad)
 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+AppFlow:
+![App Flow](https://github.com/ZiadAhmedHelmy/Foodi-App/assets/145056091/3cfffe4c-c92f-4eba-bdcb-04dfc80d4864)
+
+    
+
+               
+
+
