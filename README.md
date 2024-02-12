@@ -5,7 +5,7 @@
 
 App Structure:
     MVVM Pattern....
-    ![MVVM](https://github.com/ZiadAhmedHelmy/Foodi-App/assets/145056091/ab9a2fbf-e264-4529-8563-0dab56f0e3ad)
+![MVVM](https://github.com/ZiadAhmedHelmy/Foodi-App/assets/145056091/ab9a2fbf-e264-4529-8563-0dab56f0e3ad)
 
 
 
