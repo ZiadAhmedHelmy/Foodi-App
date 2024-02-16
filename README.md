@@ -1,6 +1,5 @@
 # Foodi app
 
-[Foodi.pdf](https://github.com/ZiadAhmedHelmy/Foodi-App/files/14250634/Foodi.pdf)
 
 
 App Structure:
